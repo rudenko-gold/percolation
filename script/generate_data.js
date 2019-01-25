@@ -507,6 +507,7 @@ document.getElementById("first").onclick = function() {
 
 document.getElementById("last").onclick = function() {
     step = data_history.length - 1;
+	step = Math.max(step, 0);
     change_step();
     view(step);
 }
@@ -518,7 +519,7 @@ function play() {
         isPlay = false;
         document.getElementById("play").style.backgroundImage = "url(image/icons/media_play.png)";
     } else {
-        if(step == data_history.length) {
+        if(step == data_history.length || data_history.length == 0) {
             return;
         }
         isPlay = true;
@@ -542,6 +543,7 @@ generate_btn.onclick = function() {
 
 check_dsu_show.onchange = async function() {
 	    step = Math.min(step, data_history.length - 1);
+	step = Math.max(step, 0);
     view(step);
 }
 
