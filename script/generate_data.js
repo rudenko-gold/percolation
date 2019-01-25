@@ -24,6 +24,7 @@ size_changer.oninput = function() {
     change_step();
     isPlay = false;
     generate_view();
+	    document.getElementById("play").style.backgroundImage = "url(image/icons/media_play.png)";
 }
 
 size_text.onchange = function() {
