@@ -485,7 +485,8 @@ document.getElementById("next").onclick = function() {
 }
 
 document.getElementById("prev").onclick = function() {
-    if(step > 0) {
+    step = Math.min(step, data_history.length - 1);
+	if(step > 0) {
         step--;
     }
     change_step();
