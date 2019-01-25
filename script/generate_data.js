@@ -178,6 +178,13 @@ function generate_view() {
     document.getElementById("main").appendChild(maze);
 }
 
+function percolate(v, size) {
+    var check = false;
+    for (var i = size * size; i > size * size - size; i--) {
+        check = check || connected(v, i);
+    }
+    return check;
+}
 
 function generate_percolation() {
     //make_set(size * size + 2);
@@ -200,11 +207,6 @@ function generate_percolation() {
     for (var i = 1; i <= size; ++i) {
         //union_sets(0, i);
         union(0, i);
-    }
-
-    for (var i = size * size; i > size * size - size; i--) {
-        //union_sets(size * size + 1, i);
-        union(size * size + 1, i);
     }
 
     var t_data = new Array(size);
@@ -231,7 +233,7 @@ function generate_percolation() {
     }
     rank_history.push(t_data);
 
-    while (!connected(0, size * size + 1)) {
+    while (!percolate(0, size)) {
         var rand, rand_i, rand_j;
         rand = Math.floor(Math.random() * (size * size)) + 1;
         rand_i = Math.floor(rand / size);
@@ -473,7 +475,6 @@ async function demo_view() {
         }
         await sleep(delay - size + 20);
     }
-	step--;
 }
 
 document.getElementById("next").onclick = function() {
@@ -486,7 +487,7 @@ document.getElementById("next").onclick = function() {
 
 document.getElementById("prev").onclick = function() {
     step = Math.min(step, data_history.length - 1);
-	if(step > 0) {
+    if(step > 0) {
         step--;
     }
     change_step();
