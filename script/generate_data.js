@@ -481,6 +481,7 @@ document.getElementById("next").onclick = function() {
     if(step < data_history.length - 1) {
         step++;
     }
+step = Math.min(step, data_history.length - 1);
     change_step();
     view(step);
 }
