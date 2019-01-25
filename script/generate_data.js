@@ -487,12 +487,14 @@ document.getElementById("next").onclick = function() {
         step++;
     }
 step = Math.min(step, data_history.length - 1);
+	step = Math.max(step, 0);
     change_step();
     view(step);
 }
 
 document.getElementById("prev").onclick = function() {
     step = Math.min(step, data_history.length - 1);
+	step = Math.max(step, 0);
     if(step > 0) {
         step--;
     }
