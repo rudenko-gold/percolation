@@ -35,7 +35,19 @@ size_text.onchange = function() {
     if((size_text.value) > 100) {
         size_text.value = 100;
     }
+    if((size_text.value) < 5) {
+        size_text.value = 5;
+    }
     size_changer.value = size_text.value;
+    size = Number(size_changer.value);
+
+    blocked = size * size;
+    step = 0;
+    data_history.length = 0;
+    change_step();
+    isPlay = false;
+    generate_view();
+    document.getElementById("play").style.backgroundImage = "url(image/icons/media_play.png)";
 }
 
 var parent;
