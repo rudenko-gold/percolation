@@ -537,6 +537,7 @@ generate_btn.onclick = function() {
 }
 
 check_dsu_show.onchange = async function() {
+	    step = Math.min(step, data_history.length - 1);
     view(step);
 }
 
