@@ -1,0 +1,251 @@
+<!DOCTYPE html> 
+<html>
+    <head> 
+        <title> Percolation </title>
+        <link rel = "stylesheet" href = "style/style.css">
+        <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+        <link rel="manifest" href="favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="Description" content="Percolation simulation with using Disjoint-Set-Union data structure.">
+        <meta name="keywords" content="percolation, simulation, algorithm, visualization, data, data structure, set, union, disjoint, study, university, javascript, github, rudenko_gold, rudenko">
+        <meta name="author" content = "Rudenko Dmytro">
+        <meta name="copyright" content="Created by @rudenko_gold">
+    </head>
+    <body>
+        <div class = "window">  
+            <div class = "left_menu">
+                <div class = "logo"> 
+                    <div class = "button">
+                        <a target = "_blank"href = "https://en.wikipedia.org/wiki/Percolation_theory"> Percolation</a>
+                    </div>
+                </div>
+                <div class = "manual">
+                    <!--
+                    <div class = "header"> How does it work?</div>
+                    <div class = "percolation_info">
+                    </div>
+                -->
+                </div>
+                <div class = "left_button_space">
+                    <!--<div class = "button" id = "save_btn">
+                        Save 
+                    </div>-->
+                </div>
+                <div class = "copyright">
+                    Created by @rudenko_gold
+                </div>
+            </div>
+
+            <div class = "main" id = "main">
+                <div class = "maze" id = "maze">
+                    <div class = "row" id = "1">
+                        <div class = "cell" id = "1.1"></div>
+                        <div class = "cell" id = "1.2"></div>
+                        <div class = "cell" id = "1.3"></div>
+                        <div class = "cell" id = "1.4"></div>
+                        <div class = "cell" id = "1.5"></div>
+                        <div class = "cell" id = "1.6"></div>
+                        <div class = "cell" id = "1.7"></div>
+                        <div class = "cell" id = "1.8"></div>
+                        <div class = "cell" id = "1.9"></div>
+                        <div class = "cell" id = "1.10"></div>
+                    </div>
+                    <div class = "row" id = "2">
+                        <div class = "cell" id = "2.1"></div>
+                        <div class = "cell" id = "2.2"></div>
+                        <div class = "cell" id = "2.3"></div>
+                        <div class = "cell" id = "2.4"></div>
+                        <div class = "cell" id = "2.5"></div>
+                        <div class = "cell" id = "2.6"></div>
+                        <div class = "cell" id = "2.7"></div>
+                        <div class = "cell" id = "2.8"></div>
+                        <div class = "cell" id = "2.9"></div>
+                        <div class = "cell" id = "2.10"></div>
+                    </div>
+                    <div class = "row" id = "3">
+                        <div class = "cell" id = "3.1"></div>
+                        <div class = "cell" id = "3.2"></div>
+                        <div class = "cell" id = "3.3"></div>
+                        <div class = "cell" id = "3.4"></div>
+                        <div class = "cell" id = "3.5"></div>
+                        <div class = "cell" id = "3.6"></div>
+                        <div class = "cell" id = "3.7"></div>
+                        <div class = "cell" id = "3.8"></div>
+                        <div class = "cell" id = "3.9"></div>
+                        <div class = "cell" id = "3.10"></div>
+                    </div>
+                    <div class = "row" id = "4">
+                        <div class = "cell" id = "4.1"></div>
+                        <div class = "cell" id = "4.2"></div>
+                        <div class = "cell" id = "4.3"></div>
+                        <div class = "cell" id = "4.4"></div>
+                        <div class = "cell" id = "4.5"></div>
+                        <div class = "cell" id = "4.6"></div>
+                        <div class = "cell" id = "4.7"></div>
+                        <div class = "cell" id = "4.8"></div>
+                        <div class = "cell" id = "4.9"></div>
+                        <div class = "cell" id = "4.10"></div>
+                    </div>
+                    <div class = "row" id = "5">
+                        <div class = "cell" id = "5.1"></div>
+                        <div class = "cell" id = "5.2"></div>
+                        <div class = "cell" id = "5.3"></div>
+                        <div class = "cell" id = "5.4"></div>
+                        <div class = "cell" id = "5.5"></div>
+                        <div class = "cell" id = "5.6"></div>
+                        <div class = "cell" id = "5.7"></div>
+                        <div class = "cell" id = "5.8"></div>
+                        <div class = "cell" id = "5.9"></div>
+                        <div class = "cell" id = "5.10"></div>
+                    </div>
+                    <div class = "row" id = "6">
+                        <div class = "cell" id = "6.1"></div>
+                        <div class = "cell" id = "6.2"></div>
+                        <div class = "cell" id = "6.3"></div>
+                        <div class = "cell" id = "6.4"></div>
+                        <div class = "cell" id = "6.5"></div>
+                        <div class = "cell" id = "6.6"></div>
+                        <div class = "cell" id = "6.7"></div>
+                        <div class = "cell" id = "6.8"></div>
+                        <div class = "cell" id = "6.9"></div>
+                        <div class = "cell" id = "6.10"></div>
+                    </div>
+                    <div class = "row" id = "7">
+                        <div class = "cell" id = "7.1"></div>
+                        <div class = "cell" id = "7.2"></div>
+                        <div class = "cell" id = "7.3"></div>
+                        <div class = "cell" id = "7.4"></div>
+                        <div class = "cell" id = "7.5"></div>
+                        <div class = "cell" id = "7.6"></div>
+                        <div class = "cell" id = "7.7"></div>
+                        <div class = "cell" id = "7.8"></div>
+                        <div class = "cell" id = "7.9"></div>
+                        <div class = "cell" id = "7.10"></div>
+                    </div>
+                    <div class = "row" id = "8">
+                        <div class = "cell" id = "8.1"></div>
+                        <div class = "cell" id = "8.2"></div>
+                        <div class = "cell" id = "8.3"></div>
+                        <div class = "cell" id = "8.4"></div>
+                        <div class = "cell" id = "8.5"></div>
+                        <div class = "cell" id = "8.6"></div>
+                        <div class = "cell" id = "8.7"></div>
+                        <div class = "cell" id = "8.8"></div>
+                        <div class = "cell" id = "8.9"></div>
+                        <div class = "cell" id = "8.10"></div>
+                    </div>
+                    <div class = "row" id = "9">
+                        <div class = "cell" id = "9.1"></div>
+                        <div class = "cell" id = "9.2"></div>
+                        <div class = "cell" id = "9.3"></div>
+                        <div class = "cell" id = "9.4"></div>
+                        <div class = "cell" id = "9.5"></div>
+                        <div class = "cell" id = "9.6"></div>
+                        <div class = "cell" id = "9.7"></div>
+                        <div class = "cell" id = "9.8"></div>
+                        <div class = "cell" id = "9.9"></div>
+                        <div class = "cell" id = "9.10"></div>
+                    </div>
+                    <div class = "row" id = "10">
+                        <div class = "cell" id = "10.1"></div>
+                        <div class = "cell" id = "10.2"></div>
+                        <div class = "cell" id = "10.3"></div>
+                        <div class = "cell" id = "19.4"></div>
+                        <div class = "cell" id = "10.5"></div>
+                        <div class = "cell" id = "10.6"></div>
+                        <div class = "cell" id = "10.7"></div>
+                        <div class = "cell" id = "10.8"></div>
+                        <div class = "cell" id = "10.9"></div>
+                        <div class = "cell" id = "10.10"></div>
+                    </div>                            
+                </div>
+            </div>
+
+
+
+            <div class = "right_menu">
+                <div class = "new_maze_settings">
+                    <div class = "range-container">
+                        <div class="range-slider">
+                            <input class="range-slider" type="range" value="10" min="5" max="100" id = "size_range">
+                            <div class = "text_size">
+                                <div style = "margin-right: 10px;">Size</div>
+                                <input class='range__amount' id="amount" type='text' value='10'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "button" id = "generate_btn">
+                            Generate
+                    </div>
+                </div>
+                <div class = "examples">
+                    <div class = "button" id = "example1">
+                        Example 1
+                    </div>
+                    <div class = "button" id = "example2">
+                        Example 2
+                    </div>
+                    <div class = "button" id = "example3">
+                        Example 3
+                    </div>
+                </div>
+                <div class = "controlls">
+                     <div class = "dsu">
+                        <label class="switch">
+                            <input type="checkbox" id = "dsu_show" checked>
+                            <span class="slider round"></span>
+                        </label>
+                        <span>
+                            Show DSU
+                        </span>
+                    </div>
+                    <br>
+                    <div class = "range-container">
+                        <div class="range-slider">
+                            <input class="range-slider" type="range" value="3" min="1" max="5" id = "speed_range">
+                            <div style = "margin-top: 5px;">Speed</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div id = "open_sites">
+                        Open sites: <span id = "site_amount">0</span>
+                    </div>
+                    <div class = "play_buttons">
+                        <div class = "play_button first" id = "first">
+                            
+                        </div>
+                        <div class = "play_button prev" id = "prev">
+                            
+                        </div>
+                        <div class = "play_button play" id = "play">
+                            
+                        </div>
+                        <div class = "play_button next" id = "next">
+                            
+                        </div>
+                        <div class = "play_button last" id = "last">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script/dsu.js"></script>
+        <script src="script/generate_data.js"></script>
+    </body>
+</html>
