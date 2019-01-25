@@ -21,6 +21,7 @@ size_changer.oninput = function() {
     size_text.value = size_changer.value;
     blocked = size * size;
 	    step = 0;
+	data_history.length = 0;
     change_step();
     isPlay = false;
     generate_view();
