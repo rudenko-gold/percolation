@@ -473,6 +473,7 @@ async function demo_view() {
         }
         await sleep(delay - size + 20);
     }
+	step--;
 }
 
 document.getElementById("next").onclick = function() {
