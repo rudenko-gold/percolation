@@ -20,6 +20,10 @@ size_changer.oninput = function() {
     size = Number(size_changer.value);
     size_text.value = size_changer.value;
     blocked = size * size;
+	    step = 0;
+    change_step();
+    isPlay = false;
+    generate_view();
 }
 
 size_text.onchange = function() {
