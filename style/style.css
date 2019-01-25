@@ -376,6 +376,7 @@
 
 a { 
     text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    color: #4CAF50;
 }
 
 a:visited {
