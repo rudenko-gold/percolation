@@ -29,6 +29,12 @@ size_changer.oninput = function() {
 }
 
 size_text.onchange = function() {
+	for(var i = 0; i < size_text.value.length; i++) {
+		if(size_text.value[i] < '0' && size_text.value[i] > '9') {
+			size_text.value = 10;
+			break;
+		}
+	}
     if(size_text.value == "") {
         size_text.value = 10;
     }
