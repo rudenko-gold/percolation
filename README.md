@@ -1,2 +1,2 @@
-# percolation.gihub.io
-Percolation simulation
+# Percolation
+Monte-Carlo Simultion
