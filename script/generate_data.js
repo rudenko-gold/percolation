@@ -14,11 +14,15 @@ check_dsu_show = document.getElementById("dsu_show");
 
 size_text = document.getElementById("amount");
 
+var validNumber = new RegExp(/^\d*\.?\d*$/);
+
+var last_valid = "10";
 size = 10;
 blocked = 100;
 size_changer.oninput = function() {
     size = Number(size_changer.value);
     size_text.value = size_changer.value;
+	last_valid = size_text.value;
     blocked = size * size;
 	    step = 0;
 	data_history.length = 0;
@@ -29,12 +33,7 @@ size_changer.oninput = function() {
 }
 
 size_text.onchange = function() {
-	for(var i = 0; i < size_text.value.length; i++) {
-		if(size_text.value[i] < '0' && size_text.value[i] > '9') {
-			size_text.value = 10;
-			break;
-		}
-	}
+
     if(size_text.value == "") {
         size_text.value = 10;
     }
@@ -44,6 +43,10 @@ size_text.onchange = function() {
     if((size_text.value) < 5) {
         size_text.value = 5;
     }
+	    if(!validNumber.test(size_text.value)) {
+        size_text.value = last_valid;
+    }
+
     size_changer.value = size_text.value;
     size = Number(size_changer.value);
 
