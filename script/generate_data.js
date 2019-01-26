@@ -14,15 +14,12 @@ check_dsu_show = document.getElementById("dsu_show");
 
 size_text = document.getElementById("amount");
 
-var validNumber = new RegExp(/^\d*\.?\d*$/);
-
-var last_valid = "10";
 size = 10;
 blocked = 100;
 size_changer.oninput = function() {
     size = Number(size_changer.value);
     size_text.value = size_changer.value;
-	last_valid = size_text.value;
+    last_valid = size_text.value;
     blocked = size * size;
 	    step = 0;
 	data_history.length = 0;
@@ -32,8 +29,11 @@ size_changer.oninput = function() {
 	    document.getElementById("play").style.backgroundImage = "url(image/icons/media_play.png)";
 }
 
-size_text.onchange = function() {
+var validNumber = new RegExp(/^\d*$/);
 
+var last_valid = "10";
+
+size_text.onchange = function() {
     if(size_text.value == "") {
         size_text.value = 10;
     }
@@ -43,7 +43,7 @@ size_text.onchange = function() {
     if((size_text.value) < 5) {
         size_text.value = 5;
     }
-	    if(!validNumber.test(size_text.value)) {
+    if(!validNumber.test(size_text.value)) {
         size_text.value = last_valid;
     }
 
@@ -548,7 +548,8 @@ function play() {
             return;
         }
         isPlay = true;
-        document.getElementById("play").style.backgroundImage = "url(image/icons/media_pause.png)";
+        if(step < data_history.length)
+            document.getElementById("play").style.backgroundImage = "url(image/icons/media_pause.png)";
         demo_view();
     }
 }
@@ -576,6 +577,7 @@ document.getElementById("example1").onclick = function() {
     size = 5;
     size_changer.value = "5";
     size_text.value = "5";
+    last_valid = "5";
     step = 0;
     isPlay = false;
     generate_view();
@@ -589,6 +591,7 @@ document.getElementById("example2").onclick = function() {
     size = 25;
     size_changer.value = "25";
     size_text.value = "25";
+    last_valid = "25";
     step = 0;
     isPlay = false;
     generate_view();
@@ -602,6 +605,7 @@ document.getElementById("example3").onclick = function() {
     size = 75;
     size_changer.value = "75";
     size_text.value = "75";
+    last_valid = "75";
     step = 0;
     change_step();
     isPlay = false;
@@ -610,4 +614,3 @@ document.getElementById("example3").onclick = function() {
     step = data_history.length - 1;
     play();
 }
-
