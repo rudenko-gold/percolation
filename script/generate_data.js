@@ -441,6 +441,9 @@ function generate_percolation() {
 }
 
 function view(t) {
+    if(data_history.length == 0) {
+        return;
+    }
     change_step();
     if(t >= data_history.length) {
         t = data_history.length - 1;
